@@ -1,11 +1,33 @@
-Videogame
-Windows - Python
-2D
-Board Game
-RPG style - explore the board killing monsters, collecting equipment, kill final boss
-Pass and Play
-A.I. players
-co-op and competative race modes
-Story? - proper or random flavor text/notes
-Fantasy - DnD based?
-Xcom style percentages on actions
+
+    After reviewing feasibility of creating an RPG game and than creating a software package for the game
+our team has decided to change our final project for the semester.
+
+- Casino type games to be played locally against computer
+    - Stretch goal to allow multiplayer against different users
+
+- Coding Language Python
+    - Available to be played on both windows and osx platforms
+    - Using RenPY IDE for development
+
+- Games to be implemented
+    - Spades
+    - Roulette
+    - BlackJack
+    - Chuckaluck
+    - Poker (Stretch Goal)
+
+- All team members have experience coding in Python scripting Language
+    - Potential problems in having the program run on both OSX and Windows 
+        - If not feasible for both, will choose one 
+
+TIMELINE
+In the rest of the course project, each team will present their progress to the instructor 
+and teaching staff based on the schedule below:
+
+Project Proposal (10 pts): Feb 1
+First Meeting (10 pts): Feb 1
+Iteration 1 demo (10 pts): Feb 22
+Iteration 2 demo (10 pts): March 18
+Iteration 3 demo (10 pts): April 5
+Final Presentation (10 pts): April 15 - 19
+Submission of code and non-code artifacts (40 pts): April 19
