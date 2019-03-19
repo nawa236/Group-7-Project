@@ -33,27 +33,28 @@ def deal_cards(deck, player, comp1, comp2, comp3):
     return
 
 
-running = True
+if __name__ == '__main__':
+    running = True
 
-while running:
-    play = input("Would you like to play Spades? y or n:  ")
-    if play == 'y':
-        playerName = input("What is your name?  ")
-        #deal cards ask user for how many hands
-        #create deck
-        newdeck = create_deck()
-        Player1 = Player()
-        Teammate = Player()
-        Computer1 = Player()
-        Computer2 = Player()
-        deal_cards(newdeck,Player1, Teammate, Computer1, Computer2 )
+    while running:
+        play = input("Would you like to play Spades? y or n:  ")
+        if play == 'y':
+            playerName = input("What is your name?  ")
+            #deal cards ask user for how many hands
+            #create deck
+            newdeck = create_deck()
+            Player1 = Player()
+            Teammate = Player()
+            Computer1 = Player()
+            Computer2 = Player()
+            deal_cards(newdeck,Player1, Teammate, Computer1, Computer2 )
 
-        print(playerName,"'s Cards:")
-        Player1.print_hand()
+            print(playerName,"'s Cards:")
+            Player1.print_hand()
 
-    elif play == 'n':
-        print('Thanks for playing spades')
-        running = False
-    else:
-        print('Please enter y or n')
-    
+        elif play == 'n':
+            print('Thanks for playing spades')
+            running = False
+        else:
+            print('Please enter y or n')
+        
