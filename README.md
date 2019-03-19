@@ -8,3 +8,6 @@ Use Visual Studio Code for IDE installing kivy, python, and pygame extensions
 
 Install kivy using these instructions
 https://kivy.org/doc/stable/installation/installation.html
+
+Install pygame from:
+https://www.pygame.org/wiki/GettingStarted
