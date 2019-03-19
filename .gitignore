@@ -1,2 +1,7 @@
 
 __pycache__/Spades.cpython-37.pyc
+.vscode
+*.code-workspace
+.DS-Store
+.DS_Store
+*.code-workspace
