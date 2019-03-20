@@ -11,7 +11,7 @@ https://www.pygame.org/wiki/GettingStarted
 
 
 In order to run games moving forward:
-cd into the Group-7-Project directory and NOT the project or tests folders.
+cd into the root Group-7-Project directory (NOT the project or tests folders)
 python3 -m project.Spades
 or
 python3 -m project.RussianRoulette
@@ -20,5 +20,5 @@ python3 -m project.BlackJack
 
 
 In order to tests moving forward:
-cd into the Group-7-Project directory and NOT the project or tests folders.
+cd into the root Group-7-Project directory (NOT the project or tests folders)
 python3 -m unittest tests.test_Spades
