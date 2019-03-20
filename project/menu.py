@@ -8,7 +8,7 @@ pygame.init()
 
 
 # load and set the logo
-logo = pygame.image.load("logo32x32.png")
+logo = pygame.image.load(".\JPEG\KH.jpg ")
 pygame.display.set_icon(logo)
 pygame.display.set_caption("Casino Night") 
 clock = pygame.time.Clock()
@@ -32,7 +32,7 @@ def message_display(text):
     time.sleep(2)
     main()
 
-def button(msg,x,y,w,h,ic,ac,action=None):
+def button(screen,msg,x,y,w,h,ic,ac,action=None):
     mouse = pygame.mouse.get_pos()
     click = pygame.mouse.get_pressed()
     # print(click)
@@ -79,9 +79,9 @@ def main():
         screen.blit(TextSurf, TextRect)
 
         #add buttons
-        button("Play",300,350,400,50,(105,105,105),(211,211,211),"play")
-        button("Settings",300,450,400,50,(105,105,105),(211,211,211),"settings")
-        button("Quit",300,550,400,50,(105,105,105),(211,211,211),"quit")
+        button(screen,"Play",300,350,400,50,(105,105,105),(211,211,211),"play")
+        button(screen,"Settings",300,450,400,50,(105,105,105),(211,211,211),"settings")
+        button(screen,"Quit",300,550,400,50,(105,105,105),(211,211,211),"quit")
     
         
         pygame.display.update()
