@@ -28,10 +28,10 @@ def blackJackButton(screen,msg,x,y,w,h,ic,ac,action=None):
             if action == "draw":
                 return True
             elif action == "hold":
-                return False
+                return True
             elif action == "quit":
                 main()
-                return False
+                return True
     else:
         pygame.draw.rect(screen, ic,(x,y,w,h))
 
@@ -39,6 +39,8 @@ def blackJackButton(screen,msg,x,y,w,h,ic,ac,action=None):
     textSurf, textRect = text_objects(msg, smallText)
     textRect.center = ( (x+(w/2)), (y+(h/2)) )
     screen.blit(textSurf, textRect)
+    return False
+
 
 def blackjack(screen):
      # define a variable to control the main loop
@@ -60,18 +62,22 @@ def blackjack(screen):
         pdrawing = True
         while pdrawing:
             screen.fill((39, 119, 20))
-            deckImg = pygame.image.load('.\JPEG\\red_back.jpg')
+            deckImg = pygame.image.load('.\JPEG\Red_back.jpg')
             deckImg = pygame.transform.scale(deckImg, (50, 100))
             screen.blit(deckImg, (50,50))
             #display hand
             for p in range(len(plhand)):
-                disp_card(screen, plhand[p], (300+(50*p)+1), 800)
+                #print_card(plhand[p])
+                disp_card(screen, plhand[p], (300+(75*p)+1), 500)
 
             #make buttons
-            pdrawing = blackJackButton(screen,"Hit Me",800,450,100,50,(105,105,105),(211,211,211),"draw")
-            pdrawing = blackJackButton(screen,"Hold",800,550,100,50,(105,105,105),(211,211,211),"hold")
-            pdrawing = blackJackButton(screen,"Quit",800,650,100,50,(105,105,105),(211,211,211),"quit")
+            if blackJackButton(screen,"Hit Me",800,450,100,50,(105,105,105),(211,211,211),"draw"):
+                plhand.append(draw_card(deck))
+            if blackJackButton(screen,"Hold",800,550,100,50,(105,105,105),(211,211,211),"hold"):
+                pdrawing = False
+            if blackJackButton(screen,"Quit",800,650,100,50,(105,105,105),(211,211,211),"quit"):
+                print("quit", end="", flush=True)
             pygame.display.flip()
-            clock.tick(60)
+            clock.tick(15)
 
     return

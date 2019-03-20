@@ -1,11 +1,10 @@
-# import the pygame module, so you can use it
 import pygame
 import time
-from game_menu import *
+from BlackJack import blackjack
+from menu import main
 
 # initialize the pygame module
 pygame.init()
-
 
 # load and set the logo
 logo = pygame.image.load(".\JPEG\KH.jpg ")
@@ -16,14 +15,13 @@ display_height = 800
 display_width = 1000
 screen = pygame.display.set_mode((display_width, display_height))
 
-# define a main function
-def text_objects(text, font):
+def gmtext_objects(text, font):
     textSurface = font.render(text, True, (255, 255, 255))
     return textSurface, textSurface.get_rect()
  
-def message_display(text):
+def gmmessage_display(text):
     largeText = pygame.font.Font('freesansbold.ttf',115)
-    TextSurf, TextRect = text_objects(text, largeText)
+    TextSurf, TextRect = gmtext_objects(text, largeText)
     TextRect.center = ((display_width/2),(display_height/2))
     screen.blit(TextSurf, TextRect)
  
@@ -32,7 +30,7 @@ def message_display(text):
     time.sleep(2)
     main()
 
-def button(screen,msg,x,y,w,h,ic,ac,action=None):
+def gmbutton(screen,msg,x,y,w,h,ic,ac,action=None):
     mouse = pygame.mouse.get_pos()
     click = pygame.mouse.get_pressed()
     # print(click)
@@ -40,23 +38,24 @@ def button(screen,msg,x,y,w,h,ic,ac,action=None):
         pygame.draw.rect(screen, ac,(x,y,w,h))
 
         if click[0] == 1 and action != None:
-            if action == "play":
-                gamemenu(screen)
-            elif action == "settings":
-                print("Settings")
+            if action == "blackjack":
+                blackjack(screen)
+            elif action == "spades":
+                print("Spades")
+            elif action == "rr":
+                print("Russian Roulette")
             elif action == "quit":
                 #vs code errors here, running from .py file quits fine
-                pygame.QUIT()     
-                quit() 
+                main()
     else:
         pygame.draw.rect(screen, ic,(x,y,w,h))
 
     smallText = pygame.font.SysFont("comicsansms",20)
-    textSurf, textRect = text_objects(msg, smallText)
+    textSurf, textRect = gmtext_objects(msg, smallText)
     textRect.center = ( (x+(w/2)), (y+(h/2)) )
     screen.blit(textSurf, textRect)
 
-def main():
+def gamemenu(screen):
     # define a variable to control the main loop
     running = True
      
@@ -73,22 +72,16 @@ def main():
         screen.fill((39, 119, 20))
         pygame.display.flip()
         largeText = pygame.font.Font('freesansbold.ttf',115)
-        TextSurf, TextRect = text_objects("Casino Night", largeText)
-        TextRect.center = ((display_width/2),(display_height/2 - 200))
+        TextSurf, TextRect = gmtext_objects("Select Game", largeText)
+        TextRect.center = ((display_width/2),100)
         screen.blit(TextSurf, TextRect)
 
         #add buttons
-        button(screen,"Play",300,350,400,50,(105,105,105),(211,211,211),"play")
-        button(screen,"Settings",300,450,400,50,(105,105,105),(211,211,211),"settings")
-        button(screen,"Quit",300,550,400,50,(105,105,105),(211,211,211),"quit")
+        gmbutton(screen,"Black Jack",300,200,400,50,(105,105,105),(211,211,211),"blackjack")
+        gmbutton(screen,"Spades",300,300,400,50,(105,105,105),(211,211,211),"spades")
+        gmbutton(screen,"Russian Roulette",300,400,400,50,(105,105,105),(211,211,211),"rr")
+        gmbutton(screen,"Back",300,500,400,50,(105,105,105),(211,211,211),"quit")
     
         
         pygame.display.update()
         clock.tick(15)
-     
-     
-# run the main function only if this module is executed as the main script
-# (if you import this as a module then nothing is executed)
-if __name__=="__main__":
-    # call the main function
-    main()
