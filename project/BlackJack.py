@@ -16,7 +16,7 @@ display_height = 800
 display_width = 1000
 screen = pygame.display.set_mode((display_width, display_height))
 
-def blackjack():
+def blackjack(screen):
      # define a variable to control the main loop
     running = True
      
@@ -30,7 +30,8 @@ def blackjack():
                 running = False
 
         deckImg = pygame.image.load('./JPEG/red_back.jpg')
-
+        deckImg = pygame.transform.scale(deckImg, (50, 100))
         screen.blit(deckImg, (50,50))
+        
 
 
