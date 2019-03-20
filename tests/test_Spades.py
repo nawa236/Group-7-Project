@@ -1,7 +1,8 @@
 # mymodule
 import unittest
-import Spades
-from Spades import Player
+from project import Spades
+from project.Spades import Player
+
 
 class PlayerTest(unittest.TestCase):
 

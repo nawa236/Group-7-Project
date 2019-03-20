@@ -5,3 +5,4 @@ __pycache__/Spades.cpython-37.pyc
 .DS-Store
 .DS_Store
 *.code-workspace
+*.pyc
