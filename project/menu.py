@@ -1,6 +1,7 @@
 # import the pygame module, so you can use it
 import pygame
 import time
+from BlackJack import blackjack
 
 # initialize the pygame module
 pygame.init()
@@ -40,7 +41,7 @@ def button(msg,x,y,w,h,ic,ac,action=None):
 
         if click[0] == 1 and action != None:
             if action == "play":
-                print("Play")
+                BlackJack.blackjack()
             elif action == "settings":
                 print("Settings")
             elif action == "quit":
