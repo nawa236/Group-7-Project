@@ -15,6 +15,8 @@ cd into the Group-7-Project directory and NOT the project or tests folders.
 python3 -m project.Spades
 or
 python3 -m project.RussianRoulette
+or
+python3 -m project.BlackJack
 
 
 In order to tests moving forward:
