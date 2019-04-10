@@ -1,8 +1,8 @@
 # import the pygame module, so you can use it
-import pygame
+from pygame import *
 import time
 from cardDeck import *
-from menu import *
+from menu import text_objects
 
 # initialize the pygame module
 pygame.init()
@@ -30,7 +30,6 @@ def blackJackButton(screen,msg,x,y,w,h,ic,ac,action=None):
             elif action == "hold":
                 return True
             elif action == "quit":
-                main()
                 return True
     else:
         pygame.draw.rect(screen, ic,(x,y,w,h))
@@ -46,6 +45,8 @@ def blackjack(screen):
      # define a variable to control the main loop
     running = True
     # main loop
+    deckImg = pygame.image.load('.\JPEG\Red_back.jpg')
+    deckImg = pygame.transform.scale(deckImg, (50, 100))
     while running:
         # event handling, gets all event from the event queue
         for event in pygame.event.get():
@@ -62,8 +63,6 @@ def blackjack(screen):
         pdrawing = True
         while pdrawing:
             screen.fill((39, 119, 20))
-            deckImg = pygame.image.load('.\JPEG\Red_back.jpg')
-            deckImg = pygame.transform.scale(deckImg, (50, 100))
             screen.blit(deckImg, (50,50))
             #display hand
             for p in range(len(plhand)):
@@ -77,7 +76,21 @@ def blackjack(screen):
                 pdrawing = False
             if blackJackButton(screen,"Quit",800,650,100,50,(105,105,105),(211,211,211),"quit"):
                 print("quit", end="", flush=True)
-            pygame.display.flip()
-            clock.tick(15)
+                return
+            plscore = 0
+            for p in range(len(plhand)):
+                if plhand[p].card.value != 13:
+                    plscore += plhand[p].card.value
+            for p in range(len(plhand)):
+                if plhand[p].card.value == 13 and (plscore + 13) <= 21:
+                    plscore += plhand[p].card.value
+                else:
+                    plscore += 1
+            if plscore >= 21:
+                pdrawing = False
 
+            pygame.display.update()  
+            clock.tick(30)
+            print("loop")
+                
     return
