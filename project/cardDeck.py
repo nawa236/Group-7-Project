@@ -138,6 +138,7 @@ class PlayingCard:
                 self.cardImg = pygame.image.load('.\JPEG\KC.jpg')
             elif card_rank == 14:
                 self.cardImg = pygame.image.load('.\JPEG\AC.jpg')
+        self.cardImg = pygame.transform.scale(self.cardImg, (50, 100))
 
 def create_deck():
     for suit in Suit :
@@ -171,5 +172,4 @@ def print_card(card):
     return
 
 def disp_card(screen, card, x, y):
-    card.cardImg = pygame.transform.scale(card.cardImg, (50, 100))
     screen.blit(card.cardImg, (x,y))
