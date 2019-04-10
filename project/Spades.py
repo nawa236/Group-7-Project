@@ -1,5 +1,5 @@
 #text based spades game
-from cardDeck import *
+from project.cardDeck import *
 
 
 class Player():
