@@ -45,6 +45,8 @@ def blackjack(screen):
      # define a variable to control the main loop
     running = True
     # main loop
+    deckImg = pygame.image.load('.\JPEG\Red_back.jpg')
+    deckImg = pygame.transform.scale(deckImg, (50, 100))
     while running:
         # event handling, gets all event from the event queue
         for event in pygame.event.get():
@@ -58,8 +60,6 @@ def blackjack(screen):
         plhand = [draw_card(deck), draw_card(deck)]
         plscore = 0
         #player drawing phase
-        deckImg = pygame.image.load('.\JPEG\Red_back.jpg')
-        deckImg = pygame.transform.scale(deckImg, (50, 100))
         pdrawing = True
         while pdrawing:
             screen.fill((39, 119, 20))
@@ -77,18 +77,20 @@ def blackjack(screen):
             if blackJackButton(screen,"Quit",800,650,100,50,(105,105,105),(211,211,211),"quit"):
                 print("quit", end="", flush=True)
                 return
-            pygame.display.update()  
-            #clock.tick(30)
-            score = 0
+            plscore = 0
             for p in range(len(plhand)):
                 if plhand[p].card.value != 13:
-                    score += plhand[p].card.value
+                    plscore += plhand[p].card.value
             for p in range(len(plhand)):
-                if plhand[p].card.value == 13 and (sum + 13) <= 21:
-                    score += plhand[p].card.value
+                if plhand[p].card.value == 13 and (plscore + 13) <= 21:
+                    plscore += plhand[p].card.value
                 else:
-                    score += 1
-            if score >= 21:
+                    plscore += 1
+            if plscore >= 21:
                 pdrawing = False
+
+            pygame.display.update()  
+            clock.tick(30)
+            print("loop")
                 
     return
