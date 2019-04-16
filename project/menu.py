@@ -3,6 +3,7 @@ import pygame
 import time
 from game_menu import *
 
+
 # initialize the pygame module
 pygame.init()
 

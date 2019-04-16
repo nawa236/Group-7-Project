@@ -41,6 +41,7 @@ def blackJackButton(screen,msg,x,y,w,h,ic,ac,action=None):
     return False
 
 
+
 def blackjack(screen):
      # define a variable to control the main loop
     running = True
@@ -58,16 +59,26 @@ def blackjack(screen):
         deck = create_deck()
         #initial player hand
         plhand = [draw_card(deck), draw_card(deck)]
+        dlhand = [draw_card(deck), draw_card(deck)]
         plscore = 0
         #player drawing phase
         pdrawing = True
         while pdrawing:
+            for event in pygame.event.get():
+                # only do something if the event is of type QUIT
+                if event.type == pygame.QUIT:
+                    # change the value to False, to exit the main loop
+                    running = False
+                    pdrawing = False
+                    
             screen.fill((39, 119, 20))
             screen.blit(deckImg, (50,50))
-            #display hand
+            #display hands
             for p in range(len(plhand)):
                 #print_card(plhand[p])
                 disp_card(screen, plhand[p], (300+(75*p)+1), 500)
+            for c in range(len(dlhand)):
+                disp_card(screen, dlhand[c], (300+(75*c)+1), 50)
 
             #make buttons
             if blackJackButton(screen,"Hit Me",800,450,100,50,(105,105,105),(211,211,211),"draw"):
@@ -77,20 +88,93 @@ def blackjack(screen):
             if blackJackButton(screen,"Quit",800,650,100,50,(105,105,105),(211,211,211),"quit"):
                 print("quit", end="", flush=True)
                 return
+
+            #calculate player hand score
             plscore = 0
             for p in range(len(plhand)):
                 if plhand[p].card.value != 13:
                     plscore += plhand[p].card.value
+            #deal with aces
             for p in range(len(plhand)):
                 if plhand[p].card.value == 13 and (plscore + 13) <= 21:
                     plscore += plhand[p].card.value
                 else:
                     plscore += 1
+            #blackjack or bust
             if plscore >= 21:
                 pdrawing = False
 
             pygame.display.update()  
             clock.tick(30)
-            print("loop")
-                
+        #drawing for dealer if player has not busted
+        if plscore <= 21:
+            dealdraw = True
+            while dealdraw:
+                for event in pygame.event.get():
+                    # only do something if the event is of type QUIT
+                    if event.type == pygame.QUIT:
+                        # change the value to False, to exit the main loop
+                        running = False
+                        pdrawing = False
+                dlscore = 0
+                #calculate dealer score
+                for d in range(len(dlhand)):
+                    if plhand[p].card.value != 13:
+                        dlscore += dlhand[p].card.value
+                for d in range(len(dlhand)):
+                    if dlhand[d].card.value == 13 and (dlscore + 13) <= 21:
+                        dlscore += plhand[d].card.value
+                    else:
+                        dlscore += 1
+                #draw if dealer is not tied or greater than player
+                if dlscore < plscore:
+                    dlhand.append(draw_card(deck))
+                else:
+                    dealdraw = False
+
+                #
+                if blackJackButton(screen,"Quit",800,650,100,50,(105,105,105),(211,211,211),"quit"):
+                    print("quit", end="", flush=True)
+                    return
+                #display hands
+                for c in range(len(plhand)):
+                    #print_card(plhand[p])
+                    disp_card(screen, plhand[c], (300+(75*p)+1), 500)
+                for c in range(len(dlhand)):
+                    disp_card(screen, dlhand[c], (300+(75*c)+1), 50)
+
+                pygame.display.update()  
+                clock.tick(30)
+
+        #results
+        dispresults = True
+        largeText = pygame.font.Font('freesansbold.ttf',115)
+        while dispresults:
+            for event in pygame.event.get():
+                # only do something if the event is of type QUIT
+                if event.type == pygame.QUIT:
+                    # change the value to False, to exit the main loop
+                    running = False
+                    pdrawing = False
+            #determine results
+            if plscore > 21:
+                TextSurf, TextRect = text_objects("You Busted", largeText)
+            elif dlscore > 21:
+                TextSurf, TextRect = text_objects("You Win (dealer busted)", largeText)
+            elif plscore == dlscore:
+                TextSurf, TextRect = text_objects("Tie", largeText)
+            elif plscore > dlscore:
+                TextSurf, TextRect = text_objects("You Win", largeText)
+            elif dlscore > plscore:
+                TextSurf, TextRect = text_objects("You Lose", largeText)
+            else:
+                TextSurf, TextRect = text_objects("ERROR", largeText)
+
+            TextRect.center = ((display_width/2),(display_height/2 - 200))
+            screen.blit(TextSurf, TextRect)
+            for c in range(len(plhand)):
+                    #print_card(plhand[p])
+                    disp_card(screen, plhand[c], (300+(75*p)+1), 500)
+            for c in range(len(dlhand)):
+                    disp_card(screen, dlhand[c], (300+(75*c)+1), 50)
     return

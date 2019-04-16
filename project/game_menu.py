@@ -1,8 +1,7 @@
 import pygame
 import time
+import menu
 from BlackJack import blackjack
-from menu import main
-
 # initialize the pygame module
 pygame.init()
 
