@@ -31,6 +31,8 @@ def blackJackButton(screen,msg,x,y,w,h,ic,ac,action=None):
                 return True
             elif action == "quit":
                 return True
+            elif action == "continue":
+                return True
     else:
         pygame.draw.rect(screen, ic,(x,y,w,h))
 
@@ -70,7 +72,7 @@ def blackjack(screen):
                     # change the value to False, to exit the main loop
                     running = False
                     pdrawing = False
-                    
+
             screen.fill((39, 119, 20))
             screen.blit(deckImg, (50,50))
             #display hands
@@ -86,7 +88,6 @@ def blackjack(screen):
             if blackJackButton(screen,"Hold",800,550,100,50,(105,105,105),(211,211,211),"hold"):
                 pdrawing = False
             if blackJackButton(screen,"Quit",800,650,100,50,(105,105,105),(211,211,211),"quit"):
-                print("quit", end="", flush=True)
                 return
 
             #calculate player hand score
@@ -98,7 +99,7 @@ def blackjack(screen):
             for p in range(len(plhand)):
                 if plhand[p].card.value == 13 and (plscore + 13) <= 21:
                     plscore += plhand[p].card.value
-                else:
+                elif plhand[p] == 13:
                     plscore += 1
             #blackjack or bust
             if plscore >= 21:
@@ -110,6 +111,8 @@ def blackjack(screen):
         if plscore <= 21:
             dealdraw = True
             while dealdraw:
+                screen.fill((39, 119, 20))
+                screen.blit(deckImg, (50,50))
                 for event in pygame.event.get():
                     # only do something if the event is of type QUIT
                     if event.type == pygame.QUIT:
@@ -148,8 +151,10 @@ def blackjack(screen):
 
         #results
         dispresults = True
-        largeText = pygame.font.Font('freesansbold.ttf',115)
+        largeText = pygame.font.Font('freesansbold.ttf',75)
         while dispresults:
+            screen.fill((39, 119, 20))
+            screen.blit(deckImg, (50,50))
             for event in pygame.event.get():
                 # only do something if the event is of type QUIT
                 if event.type == pygame.QUIT:
@@ -170,11 +175,18 @@ def blackjack(screen):
             else:
                 TextSurf, TextRect = text_objects("ERROR", largeText)
 
-            TextRect.center = ((display_width/2),(display_height/2 - 200))
+            TextRect.center = ((display_width/2),(display_height/2))
             screen.blit(TextSurf, TextRect)
             for c in range(len(plhand)):
                     #print_card(plhand[p])
                     disp_card(screen, plhand[c], (300+(75*p)+1), 500)
             for c in range(len(dlhand)):
                     disp_card(screen, dlhand[c], (300+(75*c)+1), 50)
+
+            if blackJackButton(screen,"CONTINUE",800,450,100,50,(105,105,105),(211,211,211),"continue"):
+                dispresults = False
+            if blackJackButton(screen,"Quit",800,650,100,50,(105,105,105),(211,211,211),"quit"):
+                return
+            pygame.display.update()  
+            clock.tick(30)
     return
