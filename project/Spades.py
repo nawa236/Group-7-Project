@@ -1,5 +1,5 @@
 #text based spades game
-from cardDeck_print import *
+from project.cardDeck_print import *
 
 class SpadesGame():
     def __init__(self,playerName):
