@@ -17,15 +17,19 @@ from math import *
 #Call the function
 def get_a_number_to_bet_on():
     #1. ask the user to enter a bet from 0-36
-    betnum = input("What number do you want to bet on? (0-36) ")
-    while betnum == (0,36):
-        betnum = int(input("What number do you want to bet on? (0-36) "))
+   
+    betnum = input("Below Bet ")
+    #x=range(36)
+    #while betnum == (0,36):
+        #betnum = int(input("What number do you want to bet on? (0-36) "))
     if betnum in range(0,36):
         #2. save this bet for later function
+        
+        betnum = input("What number do you want to bet on? (0-36) ")
         return betnum
     else:
         #3. if number is not in range ask to bet again
-        print("Bet again")
+        #print("Bet again")
         betnum = input("What number do you want to bet on? (0-36) ")
          
       
