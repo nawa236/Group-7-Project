@@ -1,8 +1,7 @@
 import pygame
 import time
+import menu
 from BlackJack import blackjack
-from menu import main
-
 # initialize the pygame module
 pygame.init()
 
@@ -45,8 +44,7 @@ def gmbutton(screen,msg,x,y,w,h,ic,ac,action=None):
             elif action == "rr":
                 print("Russian Roulette")
             elif action == "quit":
-                #vs code errors here, running from .py file quits fine
-                main()
+                return
     else:
         pygame.draw.rect(screen, ic,(x,y,w,h))
 
