@@ -13,13 +13,13 @@ class TestStringMethods(unittest.TestCase):
         s = 'hello world'
         self.assertEqual(s.split(), ['hello', 'world'])
         # check that s.split fails when the separator is not a string
-        with self.assertRaises(TypeError):
-            s.split(2)
+  #      with self.assertRaises(TypeError):
+   #         s.split(2)
 
 
 
-    def square(x):
-            return x * x
+#    def square(x):
+ #           return x * x
     
        
 if __name__ == '__main__':
@@ -27,8 +27,8 @@ if __name__ == '__main__':
     import doctest
     doctest.testmod()
 
-def fun(x):
-    return x + 1
+#def fun(x):
+ #   return x + 1
 
 class MyTest(unittest.TestCase):
     def test(self):

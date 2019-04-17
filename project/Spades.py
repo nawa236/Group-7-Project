@@ -1,4 +1,3 @@
-#text based spades game
 from project.cardDeck_print import *
 
 class SpadesGame():
@@ -187,8 +186,6 @@ class Team():
                 print(player.name," tried to go nil and failed, losing the team 100 points!")
                 pointDiff = -100
         return pointDiff
-
-
 
 class Player():
     def __init__(self, name, computer):
