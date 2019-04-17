@@ -61,7 +61,7 @@ class freecell:
     #function to move a card in cascade's columns  to a freecell
     def free(self, c):
         if self.game.freecells[0].count('--') == 0:
-            print('the cells are full')
+            print('The cells are full')
         else:
             for item_idx in range (0,4):
                 if self.game.freecells[0][item_idx] == self.game.empty :
