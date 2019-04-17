@@ -109,6 +109,7 @@ class SpadesGame():
         else:
             self.start_round()
 
+
     def determine_book_winner(self):
         val = 0
         winner = None
