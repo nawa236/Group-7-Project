@@ -35,7 +35,7 @@ class PlayerTest(unittest.TestCase):
         t = Team(Player("P1",False),Player("P2",False))
         d = Deck()
         t.deal_cards(d)
-        assert(len(d.cards == 26))
+        assert(len(d.cards) == 26)
         assert(len(t.players[0].hand) == 13)
         assert(len(t.players[1].hand) == 13)
 
