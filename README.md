@@ -10,6 +10,7 @@ Install pygame from:
 https://www.pygame.org/wiki/GettingStarted
 
 
+## Running on Linux/Jenkins
 In order to run games moving forward:
 cd into the root Group-7-Project directory (NOT the project or tests folders)
 python3 -m project.Spades
@@ -22,3 +23,18 @@ python3 -m project.BlackJack
 In order to tests moving forward:
 cd into the root Group-7-Project directory (NOT the project or tests folders)
 python3 -m unittest tests.test_Spades
+
+
+## Running on Windows
+In order to run games moving forward:
+cd into the root Group-7-Project directory (NOT the project or tests folders)
+python -m project.Spades
+or
+python -m project.RussianRoulette
+or
+python -m project.BlackJack
+
+
+In order to tests moving forward:
+cd into the root Group-7-Project directory (NOT the project or tests folders)
+python -m unittest tests.test_Spades
