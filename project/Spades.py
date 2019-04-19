@@ -1,4 +1,4 @@
-from project.cardDeck_print import *
+from cardDeck_print import *
 
 class SpadesGame():
     def __init__(self,playerName):
@@ -313,7 +313,7 @@ class Player():
 
 
 
-if __name__ == '__main__':
+def spades():
     running = True
 
     while running:

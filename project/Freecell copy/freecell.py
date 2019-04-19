@@ -223,9 +223,8 @@ class freecell:
                            for self.game.foundations[list][item_idx] in self.game.foundations):
                         return True
 
-def main():
+def freecellmain():
     x = freecell()
     x.play()
     x.game_over()
-if __name__ == '__main__':
-    main()
+

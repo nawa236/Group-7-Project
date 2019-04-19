@@ -183,7 +183,7 @@ def get_y_or_n():
 
 
 #1. Main function "def main:()"
-def main ():
+def roulette ():
     print()
     #2. display introductory message Spin and win! Big Blue Roulette!!!
     print("Spin and Win!!! Big Blue Roulette!!!")
@@ -229,4 +229,3 @@ def main ():
     print()
         
 #14. End with main         
-main()

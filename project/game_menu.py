@@ -1,7 +1,12 @@
+import sys
+sys.path.insert(0, './Freecell copy')
 import pygame
 import time
 import menu
 from BlackJack import blackjack
+from Spades import spades
+from freecell import freecellmain
+from RussianRoulette import roulette
 # initialize the pygame module
 pygame.init()
 
@@ -40,9 +45,11 @@ def gmbutton(screen,msg,x,y,w,h,ic,ac,action=None):
             if action == "blackjack":
                 blackjack(screen)
             elif action == "spades":
-                print("Spades")
+                spades()
             elif action == "rr":
-                print("Russian Roulette")
+                roulette()
+            elif action == "fc":
+                freecellmain()
             elif action == "quit":
                 return
     else:
@@ -77,8 +84,9 @@ def gamemenu(screen):
         #add buttons
         gmbutton(screen,"Black Jack",300,200,400,50,(105,105,105),(211,211,211),"blackjack")
         gmbutton(screen,"Spades",300,300,400,50,(105,105,105),(211,211,211),"spades")
-        gmbutton(screen,"Russian Roulette",300,400,400,50,(105,105,105),(211,211,211),"rr")
-        gmbutton(screen,"Back",300,500,400,50,(105,105,105),(211,211,211),"quit")
+        gmbutton(screen,"Roulette",300,400,400,50,(105,105,105),(211,211,211),"rr")
+        gmbutton(screen,"Freecell",300,500,400,50,(105,105,105),(211,211,211),"fc")
+        gmbutton(screen,"Back",300,600,400,50,(105,105,105),(211,211,211),"quit")
     
         
         pygame.display.update()
