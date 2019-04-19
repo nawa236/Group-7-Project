@@ -122,11 +122,11 @@ def blackjack(screen):
                 dlscore = 0
                 #calculate dealer score
                 for d in range(len(dlhand)):
-                    if plhand[p].card.value != 13:
-                        dlscore += dlhand[p].card.value
+                    if dlhand[d].card.value != 13:
+                        dlscore += dlhand[d].card.value
                 for d in range(len(dlhand)):
                     if dlhand[d].card.value == 13 and (dlscore + 13) <= 21:
-                        dlscore += plhand[d].card.value
+                        dlscore += dlhand[d].card.value
                     else:
                         dlscore += 1
                 #draw if dealer is not tied or greater than player
